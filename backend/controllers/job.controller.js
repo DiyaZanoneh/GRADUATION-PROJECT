@@ -1,6 +1,6 @@
 import { Job } from "../models/job.model.js";
 
-
+// admin post krega job
 export const postJob = async (req, res) => {
     try {
         const { title, description, requirements, salary, location, jobType, experience, position, companyId } = req.body;
@@ -33,7 +33,7 @@ export const postJob = async (req, res) => {
         console.log(error);
     }
 }
-
+// student k liye
 export const getAllJobs = async (req, res) => {
     try {
         const keyword = req.query.keyword || "";
@@ -65,7 +65,7 @@ export const getJobById = async (req, res) => {
     try {
         const jobId = req.params.id;
         const job = await Job.findById(jobId).populate({
-            path: "applications"
+            path:"applications"
         });
         if (!job) {
             return res.status(404).json({
@@ -78,13 +78,13 @@ export const getJobById = async (req, res) => {
         console.log(error);
     }
 }
-// admin 
+// admin kitne job create kra hai abhi tk
 export const getAdminJobs = async (req, res) => {
     try {
         const adminId = req.id;
         const jobs = await Job.find({ created_by: adminId }).populate({
-            path: 'company',
-            createdAt: -1
+            path:'company',
+            createdAt:-1
         });
         if (!jobs) {
             return res.status(404).json({
