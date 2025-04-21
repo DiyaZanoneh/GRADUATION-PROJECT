@@ -1,3 +1,4 @@
+import React from 'react'
 import { Button } from './ui/button'
 import { Bookmark } from 'lucide-react'
 import { Avatar, AvatarImage } from './ui/avatar'
@@ -30,7 +31,7 @@ const Job = ({job}) => {
                 </Button>
                 <div>
                     <h1 className='font-medium text-lg'>{job?.company?.name}</h1>
-                    <p className='text-sm text-gray-500'>Amman</p>
+                    <p className='text-sm text-gray-500'>India</p>
                 </div>
             </div>
 
