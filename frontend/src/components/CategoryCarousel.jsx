@@ -1,4 +1,3 @@
-import React from 'react';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from './ui/carousel';
 import { Button } from './ui/button';
 import { useDispatch } from 'react-redux';
