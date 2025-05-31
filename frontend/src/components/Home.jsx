@@ -1,9 +1,10 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import Navbar from './shared/Navbar'
-import HeroSection from './HeroSection'
-import CategoryCarousel from './CategoryCarousel'
-import LatestJobs from './LatestJobs'
 import Footer from './shared/Footer'
+import HeroSection from './sections/HeroSection'
+import FeaturesSection from './sections/FeaturesSection'
+import TestimonialsSection from './sections/TestimonialsSection'
+import StatsSection from './sections/StatsSection'
 import useGetAllJobs from '@/hooks/useGetAllJobs'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
@@ -12,17 +13,26 @@ const Home = () => {
   useGetAllJobs();
   const { user } = useSelector(store => store.auth);
   const navigate = useNavigate();
-  useEffect(() => {
-    if (user?.role === 'recruiter') {
-      navigate("/admin/companies");
+
+
+
+  const handleGetStarted = () => {
+    if (user) {
+      // If user is logged in, navigate to the Jobs page
+      navigate('/jobs');
+    } else {
+      // If user is not logged in, navigate to the Signup page
+      navigate('/signup');
     }
-  }, []);
+  };
+
   return (
     <div>
       <Navbar />
-      <HeroSection />
-      <CategoryCarousel />
-      <LatestJobs />
+      <HeroSection handleGetStarted={handleGetStarted} />
+      <FeaturesSection />
+      <TestimonialsSection />
+      <StatsSection />
       <Footer />
     </div>
   )

@@ -1,10 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import Navbar from './components/shared/Navbar'
 import Login from './components/auth/Login'
 import Signup from './components/auth/Signup'
 import Home from './components/Home'
 import Jobs from './components/Jobs'
-import Browse from './components/Browse'
 import Profile from './components/Profile'
 import JobDescription from './components/JobDescription'
 import Companies from './components/admin/Companies'
@@ -14,7 +12,11 @@ import AdminJobs from "./components/admin/AdminJobs";
 import PostJob from './components/admin/PostJob'
 import Applicants from './components/admin/Applicants'
 import ProtectedRoute from './components/admin/ProtectedRoute'
-
+import PrivacyPolicy from './components/legal/PrivacyPolicy'
+import ContactUs from './components/legal/ContactUs'
+import TermsOfService from './components/legal/TermsOfService'
+import CompaniesPage from './components/admin/CompaniesPage'
+import CompanyDetails from './components/admin/CompanDetails'
 
 const appRouter = createBrowserRouter([
   {
@@ -36,10 +38,6 @@ const appRouter = createBrowserRouter([
   {
     path: "/description/:id",
     element: <JobDescription />
-  },
-  {
-    path: "/browse",
-    element: <Browse />
   },
   {
     path: "/profile",
@@ -70,15 +68,26 @@ const appRouter = createBrowserRouter([
     path:"/admin/jobs/:id/applicants",
     element:<ProtectedRoute><Applicants/></ProtectedRoute> 
   },
+  {
+    path: "/companiesPage", 
+    element: <ProtectedRoute><CompaniesPage /></ProtectedRoute>
+  },
+  {
+    path: "/admin/companies/view/:id",  
+    element: <ProtectedRoute><CompanyDetails /></ProtectedRoute>
+  },
 
-])
+  { path: "/privacy", element: <PrivacyPolicy /> },
+  { path: "/terms", element: <TermsOfService /> },
+  { path: "/contact", element: <ContactUs /> },
+]);
+
 function App() {
-
   return (
     <div>
       <RouterProvider router={appRouter} />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
