@@ -116,7 +116,14 @@ export const updateProfile = async (req, res) => {
         const { fullname, email, phoneNumber, bio, skills } = req.body;
         
         const file = req.file;
-        // cloudinary ayega idhar
+   
+        if (!file) {
+            return res.status(400).json({
+                message: "Resume file is missing.",
+                success: false
+            });
+        }
+
         const fileUri = getDataUri(file);
         const cloudResponse = await cloudinary.uploader.upload(fileUri.content);
 
