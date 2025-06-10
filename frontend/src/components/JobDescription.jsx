@@ -86,7 +86,7 @@ const JobDescription = () => {
               <p><span className="font-bold">Role:</span> {singleJob?.title}</p>
               <p><span className="font-bold">Location:</span> {singleJob?.location}</p>
               <p><span className="font-bold">Experience:</span> {singleJob?.experience} yrs</p>
-              <p><span className="font-bold">Salary:</span> {singleJob?.salary} LPA</p>
+              <p><span className="font-bold">Salary:</span> {singleJob?.salary} JD</p>
               <p><span className="font-bold">Total Applicants:</span> {singleJob?.applications?.length}</p>
               <p><span className="font-bold">Posted On:</span> {singleJob?.createdAt?.split('T')[0]}</p>
             </div>

@@ -39,32 +39,18 @@ const CompaniesPage = () => {
     }, [companies, searchCompanyByText])
 
     return (
-        <div>
+        <div className="min-h-screen flex flex-col">
             <Navbar />
+            <main className="flex-grow">
                 <SearchBar />
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4">
-                {filterCompany?.map((company) => (
-                    <div key={company._id} className="bg-white shadow-lg rounded-lg overflow-hidden max-w-sm">
-                        <div className="p-4 bg-gray-100">
-                            <Avatar>
-                                <AvatarImage src={company.logo} alt={company.name} />
-                            </Avatar>
-                        </div>
-                        <div className="p-4">
-                            <h2 className="text-xl font-semibold text-gray-900">{company.name}</h2>
-                            <p className="text-sm text-gray-600">
-                                Registered on: {company.createdAt.split("T")[0]}
-                            </p>
-                            <Button onClick={() => navigate(`/admin/companies/view/:id`)} className="mt-4 w-full">
-                                View Details
-                            </Button>
-                        </div>
-                    </div>
-                ))}
-            </div>
+                {/* بقية محتوى الصفحة */}
+            </main>
             <Footer />
         </div>
     )
 }
+
+
+
 
 export default CompaniesPage
